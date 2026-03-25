@@ -1,0 +1,341 @@
+/* Database Partition Demo - CSS */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tabs button {
+  flex: 1;
+  min-width: 200px;
+  padding: 15px 25px;
+  border: none;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tabs button:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+.tabs button.active {
+  background: white;
+  color: #667eea;
+  font-weight: bold;
+}
+
+/* Main Content */
+main {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+/* Partition Section */
+.partition-section h2 {
+  color: #333;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #667eea;
+}
+
+/* Explanation Box */
+.explanation {
+  background: #f8f9ff;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border-left: 4px solid #667eea;
+}
+
+.explanation p {
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.explanation ul {
+  margin-left: 20px;
+  color: #666;
+}
+
+.explanation li {
+  margin-bottom: 5px;
+}
+
+.explanation code {
+  background: #e9ecef;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #e83e8c;
+}
+
+/* Forms */
+.form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  padding: 15px;
+  background: #f8f9ff;
+  border-radius: 10px;
+}
+
+.form input,
+.form select,
+.form textarea {
+  padding: 10px 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.form textarea {
+  min-height: 60px;
+  resize: vertical;
+}
+
+.form button {
+  padding: 10px 25px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* Vertical Form */
+.vertical-form {
+  flex-direction: column;
+}
+
+.vertical-form .form-section {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.vertical-form .form-section h4 {
+  width: 100%;
+  color: #667eea;
+  margin-bottom: 5px;
+}
+
+/* Mini Form */
+.mini-form {
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.mini-form input,
+.mini-form select {
+  flex: 1;
+  min-width: 100px;
+}
+
+/* Tables Container */
+.tables-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 20px;
+}
+
+.table-wrapper {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  padding: 15px;
+  overflow-x: auto;
+}
+
+.table-wrapper h3 {
+  color: #333;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+th, td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  font-weight: 600;
+}
+
+tbody tr:hover {
+  background: #f8f9ff;
+}
+
+/* Buttons */
+.btn-delete {
+  padding: 5px 12px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn-delete:hover {
+  background: #c82333;
+}
+
+.btn-view {
+  padding: 5px 12px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.btn-view:hover {
+  background: #218838;
+}
+
+/* User Detail */
+.user-detail {
+  background: #f8f9ff;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.user-detail p {
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.user-detail hr {
+  margin: 15px 0;
+  border: none;
+  border-top: 1px dashed #ddd;
+}
+
+.hint {
+  color: #888;
+  font-style: italic;
+  text-align: center;
+  padding: 30px;
+}
+
+/* Status & Action badges */
+.status, .action {
+  padding: 4px 8px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.status-pending { background: #fff3cd; color: #856404; }
+.status-confirmed { background: #cce5ff; color: #004085; }
+.status-shipped { background: #d4edda; color: #155724; }
+.status-delivered { background: #d1e7dd; color: #0f5132; }
+.status-cancelled { background: #f8d7da; color: #721c24; }
+
+.action-login { background: #cce5ff; color: #004085; }
+.action-logout { background: #e2e3e5; color: #383d41; }
+.action-view { background: #d4edda; color: #155724; }
+.action-purchase { background: #d1c4e9; color: #4a148c; }
+
+/* Footer */
+footer {
+  text-align: center;
+  color: white;
+  margin-top: 20px;
+  padding: 15px;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tables-container {
+    grid-template-columns: 1fr;
+  }
+
+  .form {
+    flex-direction: column;
+  }
+
+  .tabs button {
+    min-width: 100%;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+}
