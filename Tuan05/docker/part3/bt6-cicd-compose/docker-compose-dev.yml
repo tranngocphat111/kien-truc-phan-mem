@@ -1,0 +1,16 @@
+services:
+  app:
+    build: ./app
+    container_name: bt6_dev_app
+    volumes:
+      - ./app:/app
+    ports:
+      - "8000:8000"
+    command: python app.py
+
+  tests:
+    build: ./app
+    container_name: bt6_dev_tests
+    volumes:
+      - ./app:/app
+    entrypoint: ["sh", "-c", "while true; do pytest -q; sleep 10; done"]

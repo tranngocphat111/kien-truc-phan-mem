@@ -1,0 +1,20 @@
+services:
+  web:
+    build: .
+    container_name: bt8_django
+    command: sh -c "python project/manage.py migrate && python project/manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+
+  celery:
+    build: .
+    container_name: bt8_celery
+    command: sh -c "cd project && celery -A core worker --loglevel=info"
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7-alpine
+    container_name: bt8_redis

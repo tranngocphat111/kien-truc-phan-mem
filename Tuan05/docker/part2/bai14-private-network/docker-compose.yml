@@ -1,0 +1,18 @@
+services:
+  service_a:
+    image: alpine:latest
+    container_name: bai14_service_a
+    command: ["sh", "-c", "sleep infinity"]
+    networks:
+      - private_net
+
+  service_b:
+    image: alpine:latest
+    container_name: bai14_service_b
+    command: ["sh", "-c", "sleep infinity"]
+    networks:
+      - private_net
+
+networks:
+  private_net:
+    driver: bridge

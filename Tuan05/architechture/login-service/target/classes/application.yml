@@ -1,0 +1,17 @@
+server:
+  port: 8082
+
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/food_identity_login}
+
+services:
+  register:
+    url: ${REGISTER_SERVICE_URL:http://localhost:8081}
+
+security:
+  jwt:
+    # Use at least 32 characters for HS256 secret
+    secret: ${JWT_SECRET:my-super-secret-jwt-key-for-food-app-2026}
+    expiration-ms: ${JWT_EXPIRATION_MS:3600000}

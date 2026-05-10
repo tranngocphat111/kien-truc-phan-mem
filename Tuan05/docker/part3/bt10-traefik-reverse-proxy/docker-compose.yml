@@ -1,0 +1,57 @@
+services:
+  traefik:
+    image: traefik:v3.1
+    container_name: bt10_traefik
+    command:
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
+      - --api.insecure=true
+    ports:
+      - "80:80"
+      - "8088:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+  flask:
+    build: ./flask
+    container_name: bt10_flask
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.flask.rule=PathPrefix(`/flask`)
+      - traefik.http.routers.flask.entrypoints=web
+      - traefik.http.services.flask.loadbalancer.server.port=5000
+      - traefik.http.middlewares.flask-strip.stripprefix.prefixes=/flask
+      - traefik.http.routers.flask.middlewares=flask-strip
+
+  wordpress:
+    image: wordpress:latest
+    container_name: bt10_wordpress
+    environment:
+      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_USER: user
+      WORDPRESS_DB_PASSWORD: password
+      WORDPRESS_DB_NAME: wordpress
+    depends_on:
+      - mysql
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.wp.rule=PathPrefix(`/wp`)
+      - traefik.http.routers.wp.entrypoints=web
+      - traefik.http.services.wp.loadbalancer.server.port=80
+      - traefik.http.middlewares.wp-strip.stripprefix.prefixes=/wp
+      - traefik.http.routers.wp.middlewares=wp-strip
+
+  mysql:
+    image: mysql:5.7
+    container_name: bt10_mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
